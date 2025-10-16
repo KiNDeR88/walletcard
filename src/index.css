@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --brand-primary:#1F49E5;
+  --brand-secondary:#FF731F;
+  --brand-text:#0E1446;
+  --bg-soft:#F6F8FF;
+  --muted:#8A8FA3;
+  --chip-bronze:#B57F50;
+}
+
+*{ box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body{ color: var(--brand-text); }
