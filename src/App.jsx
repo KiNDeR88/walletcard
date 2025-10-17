@@ -436,7 +436,9 @@ function OtpInput({ values, setValues, disabled, onComplete }) {
             next[i] = val;
             setValues(next);
             const nextEl = document.querySelector(`#otp-${i + 1}`);
-            if (val && nextEl) nextEl.focus();
+            if (val && i < values.length - 1 && nextEl) {
+              nextEl.focus();
+            }
             if (val && i === values.length - 1) {
               setTimeout(() => onComplete?.(), 0);
             }
@@ -496,10 +498,11 @@ function OtpStep({ otp, setOtp, onConfirm, onResend, loading, error, phonePretty
 }
 
 function SuccessStep({ name, phone, birth, email }) {
-  const masked = useMemo(
-    () => `${phone.slice(0, 4)}•••${phone.slice(-4)}`,
-    [phone]
-  );
+  const masked = useMemo(() => {
+    const d = (phone || '').replace(/\D/g, '');
+    const last4 = d.slice(-4) || '0000';
+    return `**** ${last4}`;
+  }, [phone]);
   const [lvl, setLvl] = useState(0);
   useEffect(() => {
     const t = setTimeout(() => setLvl(8), 50);
