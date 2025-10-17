@@ -13,4 +13,41 @@
 
 *{ box-sizing: border-box; }
 html, body, #root { height: 100%; }
-body{ color: var(--brand-text); }
+body{
+  color: var(--brand-text);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", Inter, Roboto, "Segoe UI", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Smooth scroll for in-page anchors */
+html { scroll-behavior: smooth; }
+
+/* Remove tap highlight on iOS for cleaner interactions */
+* { -webkit-tap-highlight-color: transparent; }
+
+/* Selection color tuned to brand */
+::selection {
+  background: color-mix(in srgb, var(--brand-primary) 24%, transparent);
+}
+
+/* Respect user preference to reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Dark mode CSS fallbacks (JS still updates CSS vars at runtime) */
+@media (prefers-color-scheme: dark) {
+  :root{
+    --brand-primary:#6C8BFF;
+    --brand-text:#E5E7EB;
+    --bg-soft:#0B1029;
+    --muted:#9AA4B2;
+  }
+}
