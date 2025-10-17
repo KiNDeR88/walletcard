@@ -8,13 +8,15 @@
     "type": "git",
     "url": "https://github.com/KiNDeR88/walletcard.git"
   },
+  "homepage": "https://KiNDeR88.github.io/walletcard/",
   "author": "KiNDeR88",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "predeploy": "vite build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist -b gh-pages -m \"deploy: v$npm_package_version\"",
+    "postdeploy": "echo Deployed to https://KiNDeR88.github.io/walletcard/"
   },
   "browserslist": [
     ">0.5%",
